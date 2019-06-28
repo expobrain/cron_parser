@@ -17,5 +17,6 @@ setup(
     author="Daniele Esposti <daniele.esposti@gmail.com>",
     package_dir={"": "src"},
     python_requires=">=3.6",
+    entry_points={"console_scripts": ["parse_cron = cron_parser.cli:main"]},
     packages=find_namespace_packages(where="src"),
 )
