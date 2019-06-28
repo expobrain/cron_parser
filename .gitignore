@@ -102,3 +102,12 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# VScode
+.vscode/
+
+# Mac OS X
+.DS_Store
+
+# pip
+pip-wheel-metadata/
