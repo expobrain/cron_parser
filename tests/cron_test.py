@@ -1,6 +1,6 @@
 import pytest
 
-from cron_parser import CronExpression
+from cron_parser import CronExpression, CronValueException
 
 
 @pytest.mark.parametrize(
@@ -24,5 +24,5 @@ from cron_parser import CronExpression
     ],
 )
 def test_cron_raise_value_error(kwargs, expected):
-    with pytest.raises(ValueError, match=expected):
-        CronExpression(**kwargs)
+    with pytest.raises(CronValueException, match=expected):
+        CronExpression("ls", **kwargs)
