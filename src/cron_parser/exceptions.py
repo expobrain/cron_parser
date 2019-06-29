@@ -1,9 +1,10 @@
-__all__ = ["CronValueException", "CronParseException"]
-
-
-class CronValueException(Exception):
+class CronException(Exception):
     pass
 
 
-class CronParseException(Exception):
+class CronValueException(CronException):
+    pass
+
+
+class CronParseException(CronException):
     pass
