@@ -64,11 +64,14 @@ def test_parse_raise_exception(cron_expr, expected):
         ["* * */5 * * ls", {"days": set(range(1, 31, 5))}],
         ["* * * */3 * ls", {"months": set(range(1, 12, 3))}],
         ["* * * * */2 ls", {"weekdays": set(range(0, 6, 2))}],
+        # Command with arguments
+        ["* * * * * ls /usr/local", {"command": "ls /usr/local"}],
     ],
 )
 def test_parse(cron_expr, expected_kwargs):
     expected_kwargs = dict(
         {
+            "command": "ls",
             "minutes": set(range(0, 59 + 1)),
             "hours": set(range(0, 23 + 1)),
             "days": set(range(1, 31 + 1)),
@@ -79,6 +82,6 @@ def test_parse(cron_expr, expected_kwargs):
     )
 
     result = parse(cron_expr)
-    expected = CronExpression("ls", **expected_kwargs)
+    expected = CronExpression(**expected_kwargs)
 
     assert result == expected

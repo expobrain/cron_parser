@@ -66,7 +66,7 @@ def parse(s: str) -> CronExpression:
         raise CronParseException("Invalid cron expression")
 
     # Parse tokens
-    command = tokens[5]
+    command = " ".join(tokens[5:])
     minutes = set(parse_token(tokens[0], 0, 59))
     hours = set(parse_token(tokens[1], 0, 23))
     days = set(parse_token(tokens[2], 1, 31))
